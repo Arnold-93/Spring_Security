@@ -44,6 +44,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity HttpSecurity) throws Exception {
         return HttpSecurity
+                // .csrf().disable()    esto deshabilita, Cross-Site Request Forgery intercepta la communication ++nuevo
                 .authorizeHttpRequests( auth -> {
                     auth.requestMatchers("/v1/index2").permitAll(); // le decimos que permita el acceso sin pedir login al path descripto
                     auth.anyRequest().authenticated(); // le decimos que niegue el acceso a los demás servicios, se deben autenticar
